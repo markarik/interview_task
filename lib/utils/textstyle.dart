@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wingman/utils/colors.dart';
@@ -20,7 +21,7 @@ final textSmallBold14 = GoogleFonts.inter(
   height: 1.3,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w400,
-  fontSize: fontSize14,
+  fontSize: kIsWeb ? fontSize5 : fontSize14,
   color: purpleTextLight,
 );
 
@@ -55,7 +56,10 @@ final cardStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-final card3Style = TextStyle(color: colorGrey, fontSize: fontSize15,);
+final card3Style = TextStyle(
+  color: colorGrey,
+  fontSize: fontSize15,
+);
 final smallHeaderStyle = TextStyle(
   color: colorGrey,
   fontSize: fontSize10,

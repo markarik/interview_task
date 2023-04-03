@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wingman/utils/colors.dart';
 import 'package:wingman/utils/font_sizes.dart';
+import 'package:wingman/utils/responsive.dart';
 
 class ElevationButton extends HookConsumerWidget {
   final Icon? icons;
@@ -32,33 +32,28 @@ class ElevationButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var textStyle2 = TextStyle(
-      fontSize: fontsize ?? fontSize16,
-      height: 1.5,
+      fontSize:
+          ResponsiveWidget.isSmallScreen(context) ? fontSize16 : fontSize5,
     );
 
-    return ConstrainedBox(
-      constraints: BoxConstraints.tightFor(
-        height: defaultTargetPlatform == TargetPlatform.android ? 50.0 : 56.0,
-      ),
-      child: ElevatedButton(
-        onPressed: isDisabledButton ? null : ontap,
-        style: ElevatedButton.styleFrom(
-          minimumSize: minimumSize ?? minimumSize,
-          disabledForegroundColor: wingmanWhiteMain,
-          disabledBackgroundColor: purpleText.withOpacity(0.4),
-          elevation: 0.0,
-          textStyle: textStyle2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              100.0.sp,
-            ),
+    return ElevatedButton(
+      onPressed: isDisabledButton ? null : ontap,
+      style: ElevatedButton.styleFrom(
+        minimumSize: minimumSize ?? minimumSize,
+        disabledForegroundColor: wingmanWhiteMain,
+        disabledBackgroundColor: purpleText.withOpacity(0.4),
+        elevation: 0.0,
+        textStyle: textStyle2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            100.0.sp,
           ),
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
         ),
-        child: Text(
-          title,
-        ),
+        backgroundColor: backgroundColor,
+        foregroundColor: foregroundColor,
+      ),
+      child: Text(
+        title,
       ),
     );
   }

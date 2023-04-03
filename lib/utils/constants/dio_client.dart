@@ -10,8 +10,6 @@ class DioClient {
     ),
   );
 
-
-
   Future<Response> post(String path,
       {required Map<String, dynamic> data}) async {
     return await dio.post(path,
@@ -28,8 +26,8 @@ class DioClient {
         ));
   }
 
-    Future<Response> postToken(String path,
-      {required Map<String, dynamic> data,required String token}) async {
+  Future<Response> postToken(String path,
+      {required Map<String, dynamic> data, required String token}) async {
     return await dio.post(path,
         data: data,
         options: Options(

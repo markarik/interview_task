@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wingman/screens/home/notification.dart';
 import 'package:wingman/utils/colors.dart';
+import 'package:wingman/utils/responsive.dart';
 import 'package:wingman/utils/textstyle.dart';
 
 class HomePage extends HookConsumerWidget {
@@ -10,45 +11,95 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: colorWhite,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              size: 25.0,
-              color: colorBlack,
-            ),
-            onPressed: () {}),
-        title: Text(
-          "DashBoard",
-          style: headerStyle,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        actions: <Widget>[
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  color: colorBlack,
-                  iconSize: 30.0,
-                  padding: const EdgeInsets.only(left: 28.0),
-                  icon: const FaIcon(
-                    FontAwesomeIcons.bell,
+      appBar: ResponsiveWidget.isSmallScreen(context)
+          ? AppBar(
+              title: Text(
+                "DashBoard",
+                style: headerStyle,
+              ),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              actions: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        color: colorBlack,
+                        iconSize: 30.0,
+                        padding: const EdgeInsets.only(left: 28.0),
+                        icon: const FaIcon(
+                          FontAwesomeIcons.bell,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const NotificationsPage()));
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )
+          : PreferredSize(
+              preferredSize: Size(screenSize.width, 1000),
+              child: Container(
+                color: Colors.blue,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      const Text('EXPLORE'),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: const Text(
+                                'Discover',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                            SizedBox(width: screenSize.width / 20),
+                            InkWell(
+                              onTap: () {},
+                              child: const Text(
+                                'Contact Us',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenSize.width / 50,
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          'Login',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const NotificationsPage()));
-                  },
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+      drawer: const Drawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

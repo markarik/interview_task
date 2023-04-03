@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -31,16 +32,18 @@ class SignInSignUpPage extends HookConsumerWidget {
           child: LayoutBuilder(
             builder: (context, constraints) {
               return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: constraints.maxWidth,
-                    minHeight: constraints.maxHeight,
-                  ),
-                  child: IntrinsicHeight(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: 90.h,
-                      ),
+                child: Container(
+                  width: kIsWeb ? 200.0.w : double.infinity,
+                  decoration: BoxDecoration(
+                      color: colorPurple.withOpacity(
+                    .1,
+                  )),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minWidth: constraints.maxWidth,
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
                       child: FormBuilder(
                         key: formKey,
                         child: Padding(
@@ -49,21 +52,28 @@ class SignInSignUpPage extends HookConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              logoSection(),
+                              logoSection(context),
                               Container(
                                 margin: EdgeInsets.only(
                                   top: 36.h,
                                   bottom: 38.h,
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: kIsWeb
+                                      ? MainAxisAlignment.center
+                                      : MainAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       child: Text(
                                         "Get Started",
                                         style: textSmallBold14.copyWith(
-                                            color: purpleText2,
-                                            fontSize: fontSize18),
+                                          color: purpleText2,
+                                          fontSize:
+                                              kIsWeb ? fontSize10 : fontSize18,
+                                        ),
+                                        textAlign: kIsWeb
+                                            ? TextAlign.center
+                                            : TextAlign.start,
                                       ),
                                     ),
                                   ],
@@ -74,7 +84,6 @@ class SignInSignUpPage extends HookConsumerWidget {
                                 name: 'phone_number',
                                 labelText: 'Phone Number',
                                 onchanged: (val) {},
-                                
                               ),
                               Container(
                                 margin: EdgeInsets.only(
@@ -87,11 +96,10 @@ class SignInSignUpPage extends HookConsumerWidget {
                                     if (formKey.currentState
                                             ?.saveAndValidate() ??
                                         false) {
-                                     
                                       ref.read(getOtpProvider.notifier).getOtp(
                                             context: context,
-                                            phoneNumber:formKey
-                                          .currentState!.value['phone_number'],
+                                            phoneNumber: formKey.currentState!
+                                                .value['phone_number'],
                                           );
                                     } else {
                                       debugPrint(formKey.currentState?.value

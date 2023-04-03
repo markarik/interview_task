@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wingman/utils/colors.dart';
+import 'package:wingman/utils/responsive.dart';
 import 'package:wingman/utils/textstyle.dart';
 
 class TextFormFieldMaterial extends HookWidget {
@@ -87,20 +88,27 @@ InputDecoration formFieldsImputDecorations(
   );
 }
 
-
 /// `Row` is a widget that takes a list of widgets and displays them in a row
-/// 
+///
 /// Returns:
 ///   A Row widget with a CircleAvatar widget as its child.
- logoSection() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-      CircleAvatar(
-        backgroundColor: pupleSwatch,
-        radius: 50.r,
-        child: const Text("Logo"),
-      ),
-    ],
-  );
+logoSection(BuildContext context) {
+  return ResponsiveWidget.isSmallScreen(context)
+      ? Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              backgroundColor: pupleSwatch,
+              radius: 50.r,
+              child: const Text("Logo"),
+            ),
+          ],
+        )
+      : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          CircleAvatar(
+            backgroundColor: pupleSwatch,
+            radius: 50.r,
+            child: const Text("Logo"),
+          ),
+        ]);
 }

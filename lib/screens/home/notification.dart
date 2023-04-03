@@ -51,7 +51,7 @@ class NotificationsPage extends StatelessWidget {
                       height: 100,
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundImage: AssetImage('assets/mark.jpg'),
+                          backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png'),
                         ),
                         title: Text(
                             "Neque porro quisquam est qui dolorem ipsum quia dolor "),
@@ -69,7 +69,7 @@ class NotificationsPage extends StatelessWidget {
                       height: 100,
                       child: ListTile(
                           leading: const CircleAvatar(
-                            backgroundImage: AssetImage('assets/mark.jpg'),
+                            backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png'),
                           ),
                           title: const Text(
                               "Neque porro quisquam est qui dolorem ipsum quia dolor "),
@@ -107,7 +107,7 @@ class NotificationsPage extends StatelessWidget {
                       height: 100,
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundImage: AssetImage('assets/mark.jpg'),
+                          backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png'),
                         ),
                         title: Text(
                             "Neque porro quisquam est qui dolorem ipsum quia dolor "),
@@ -125,7 +125,7 @@ class NotificationsPage extends StatelessWidget {
                       height: 100,
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundImage: AssetImage('assets/mark.jpg'),
+                          backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png'),
                         ),
                         title: Text(
                             "Neque porro quisquam est qui dolorem ipsum quia dolor "),
@@ -143,7 +143,7 @@ class NotificationsPage extends StatelessWidget {
                     children: <Widget>[
                       ListTile(
                           leading: const CircleAvatar(
-                            backgroundImage: AssetImage('assets/mark.jpg'),
+                            backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png'),
                           ),
                           title: const Text(
                               "Neque porro quisquam est qui dolorem ipsum quia dolor "),

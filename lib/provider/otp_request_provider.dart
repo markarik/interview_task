@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wingman/models/otp_reponse.dart';
@@ -28,46 +29,55 @@ class OTPClass extends StateNotifier<OtPresponse> {
         );
 
   getOtp({required BuildContext context, required phoneNumber}) async {
-    ref.read(getOTPProviderLoader.notifier).state = true;
-
-    var myUrl = 'https://test-otp-api.7474224.xyz/sendotp.php';
-
-    Response? res;
-    var data = {
-      "mobile": phoneNumber.substring(3),
-    };
-    try {
-      res = await DioClient().post(
-        myUrl,
-        data: data,
-      );
-    } on DioError catch (ex) {
-      ref.read(getOTPProviderLoader.notifier).state = false;
-      if (ex.type == DioErrorType.connectionTimeout) {
-        throw Exception("Connection  Timeout Exception");
-      }
-      throw Exception(ex.message);
-    }
-
-    if (res.statusCode != 200) {
-      throw Exception('Can\'t load OTP');
-    }
-
-    var accountList = OtPresponse.fromJson(json.decode(res.data));
-    ref.read(getOTPProviderLoader.notifier).state = false;
-
-    if (accountList.status!) {
-      var snackBar = SnackBar(content: Text(accountList.response!));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    if (kIsWeb) {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) =>
               EnterCodeSent(phoneNumber: phoneNumber.substring(3)),
         ),
       );
-    }
+    } else {
+      ref.read(getOTPProviderLoader.notifier).state = true;
 
-    state = accountList;
+      var myUrl = 'https://test-otp-api.7474224.xyz/sendotp.php';
+
+      Response? res;
+      var data = {
+        "mobile": phoneNumber.substring(3),
+      };
+      try {
+        res = await DioClient().post(
+          myUrl,
+          data: data,
+        );
+      } on DioError catch (ex) {
+        ref.read(getOTPProviderLoader.notifier).state = false;
+        if (ex.type == DioErrorType.connectionTimeout) {
+          throw Exception("Connection  Timeout Exception");
+        }
+        throw Exception(ex.message);
+      }
+
+      if (res.statusCode != 200) {
+        throw Exception('Can\'t load OTP');
+      }
+
+      var accountList = OtPresponse.fromJson(json.decode(res.data));
+      ref.read(getOTPProviderLoader.notifier).state = false;
+
+      if (accountList.status!) {
+        var snackBar = SnackBar(content: Text(accountList.response!));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) =>
+                EnterCodeSent(phoneNumber: phoneNumber.substring(3)),
+          ),
+        );
+      }
+
+      state = accountList;
+    }
   }
 }
 
@@ -89,50 +99,56 @@ class OTPVerifyClass extends StateNotifier<OtpVerify> {
       {required BuildContext context,
       required phoneNumber,
       required String otp}) async {
-    var myUrl = 'https://test-otp-api.7474224.xyz/verifyotp.php';
-
-    Response? res;
-
-    var data = {
-      "request_id": phoneNumber,
-      "code": otp,
-    };
-    try {
-      res = await DioClient().post(
-        myUrl,
-        data: data,
+    if (kIsWeb) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
-    } on DioError catch (ex) {
-      if (ex.type == DioErrorType.connectionTimeout) {
-        throw Exception("Connection  Timeout Exception");
-      }
-      throw Exception(ex);
-    }
-
-    if (res.statusCode != 200) {
-      throw Exception('Can\'t load OTP');
-    }
-    var datas = json.decode(res.data);
-
-    if (!datas['status']) {
-      var snackBar = SnackBar(content: Text(datas['response']));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else {
-      var accountList = OtpVerify.fromJson(json.decode(res.data));
+      var myUrl = 'https://test-otp-api.7474224.xyz/verifyotp.php';
 
-      state = accountList;
-      if (!accountList.profileExists!) {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const WelcomeSignUpPage(),
-          ),
+      Response? res;
+
+      var data = {
+        "request_id": phoneNumber,
+        "code": otp,
+      };
+      try {
+        res = await DioClient().post(
+          myUrl,
+          data: data,
         );
+      } on DioError catch (ex) {
+        if (ex.type == DioErrorType.connectionTimeout) {
+          throw Exception("Connection  Timeout Exception");
+        }
+        throw Exception(ex);
+      }
+
+      if (res.statusCode != 200) {
+        throw Exception('Can\'t load OTP');
+      }
+      var datas = json.decode(res.data);
+
+      if (!datas['status']) {
+        var snackBar = SnackBar(content: Text(datas['response']));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const HomePage(),
-          ),
-        );
+        var accountList = OtpVerify.fromJson(json.decode(res.data));
+
+        state = accountList;
+        if (!accountList.profileExists!) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const WelcomeSignUpPage(),
+            ),
+          );
+        } else {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+          );
+        }
       }
     }
   }

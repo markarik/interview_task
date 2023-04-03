@@ -17,6 +17,9 @@ final fontSize32 = 32.sp;
 final fontSize33 = 33.sp;
 final fontSize34 = 34.sp;
 final fontSize50 = 50.sp;
+final fontSize5 = 5.sp;
+final fontSize8 = 8.sp;
+final fontSize6 = 6.sp;
 
 final fontSize10 = 10.sp;
 final fontSize24 = 24.sp;
