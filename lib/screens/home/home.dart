@@ -20,16 +20,9 @@ class HomePage extends HookConsumerWidget {
               color: colorBlack,
             ),
             onPressed: () {}),
-        title: const Text(
+        title: Text(
           "DashBoard",
-
           style: headerStyle,
-
-          // style: TextStyle(
-          //     fontWeight: FontWeight.w700,
-          //     fontSize: 19.0,
-          //     color: colorBlack,
-          //     fontFamily: "Sofia"),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -64,7 +57,7 @@ class HomePage extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
-                  children: const <Widget>[
+                  children: <Widget>[
                     Text(
                       "List Of Account",
                       style: header2Style,
@@ -94,9 +87,9 @@ class HomePage extends HookConsumerWidget {
                             width: MediaQuery.of(context).size.width * .45,
                             height: MediaQuery.of(context).size.height * 0.15,
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "Bank Account",
                                     style: cardStyle,
@@ -104,7 +97,7 @@ class HomePage extends HookConsumerWidget {
                                 ),
                                 Text(
                                   "\$2500.00",
-                                  style: card2Style,
+                                  style: textSmallBold14,
                                 ),
                               ],
                             ),
@@ -128,9 +121,9 @@ class HomePage extends HookConsumerWidget {
                             width: MediaQuery.of(context).size.width * .45,
                             height: MediaQuery.of(context).size.height * 0.15,
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "Credit Card",
                                     style: cardStyle,
@@ -138,7 +131,7 @@ class HomePage extends HookConsumerWidget {
                                 ),
                                 Text(
                                   "\$1500.00",
-                                  style: card2Style,
+                                  style: textSmallBold14,
                                 ),
 
                                 // Icons.audiotrack,
@@ -165,9 +158,9 @@ class HomePage extends HookConsumerWidget {
                             width: MediaQuery.of(context).size.width * .45,
                             height: MediaQuery.of(context).size.height * 0.15,
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "Cash",
                                     style: cardStyle,
@@ -175,7 +168,7 @@ class HomePage extends HookConsumerWidget {
                                 ),
                                 Text(
                                   "\$800.00",
-                                  style: card2Style,
+                                  style: textSmallBold14,
                                 ),
                               ],
                             ),
@@ -208,12 +201,12 @@ class HomePage extends HookConsumerWidget {
                           child: Center(
                               child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 '\$48000.00',
                                 style: card1Style,
                               ),
-                              Text('Total Balance'),
+                              const Text('Total Balance'),
                             ],
                           )),
                         ),
@@ -225,7 +218,7 @@ class HomePage extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
                       "Last Record OverView",
                       style: header2Style,
@@ -279,7 +272,7 @@ class HomePage extends HookConsumerWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    children: [
                                       Text(
                                         'Groceries',
                                         style: header2Style,
@@ -297,12 +290,12 @@ class HomePage extends HookConsumerWidget {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text(
                                           'Credit Card',
                                           style: card3Style,
                                         ),
-                                        Text(
+                                        const Text(
                                           '\$250.00',
                                           style: TextStyle(color: colorOrange),
                                         ),
@@ -367,7 +360,7 @@ class HomePage extends HookConsumerWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    children: [
                                       Text(
                                         'Clothes',
                                         style: header2Style,
@@ -385,12 +378,12 @@ class HomePage extends HookConsumerWidget {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text(
                                           'Credit Card',
                                           style: card3Style,
                                         ),
-                                        Text(
+                                        const Text(
                                           '\$800.00',
                                           style: TextStyle(color: colorPurple),
                                         ),
@@ -454,7 +447,7 @@ class HomePage extends HookConsumerWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    children: [
                                       Text(
                                         'Rental',
                                         style: header2Style,
@@ -472,12 +465,12 @@ class HomePage extends HookConsumerWidget {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: const [
+                                      children: [
                                         Text(
                                           'Cash',
                                           style: card3Style,
                                         ),
-                                        Text(
+                                        const Text(
                                           '\$48000.00',
                                           style: TextStyle(
                                             color: colorGreen,

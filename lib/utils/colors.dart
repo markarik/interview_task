@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 Color purpleText = const Color(0xFF5D53F4);
 Color purpleTextLight = const Color(0xFF7C7AA1);
 Color purpleText2 = const Color(0xFF252162);
-Color purpleText2Dark = const Color(0xFF0F0D27);
-Color purpleContainerDark = const Color(0xFF454EB4);
 Color iconBackground = const Color(0xFFEFEEFE);
 Color wingmanGrey = const Color(0xFF808080);
-Color wingmanWhite = const Color.fromARGB(255, 247, 247, 250);
-Color wingmanWhite2 = const Color(0xFFE9E9EF);
 Color wingmanWhiteMain = const Color(0xFFFFFFFF);
 
 Color wingmanRed = const Color(0xFFE73144);
@@ -33,7 +29,6 @@ const MaterialColor pupleSwatch = MaterialColor(
     900: Color(0xFF5D53F4),
   },
 );
-Color wingmanTextGrey2 = const Color(0x00ffffff);
 
 
 

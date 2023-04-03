@@ -5,6 +5,7 @@ import 'package:wingman/screens/auth/sign_in_sign_up.dart';
 
 void main() => runApp( ProviderScope(child: MyApp()));
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   var title = "Login";
 

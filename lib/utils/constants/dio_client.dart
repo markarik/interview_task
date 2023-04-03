@@ -1,4 +1,3 @@
-// Package imports:
 import 'package:dio/dio.dart';
 import 'package:wingman/utils/constants/constant.dart';
 
@@ -11,22 +10,7 @@ class DioClient {
     ),
   );
 
-  // Future<Response> get(String path) async {
-  //   var token = ConstantKeys.token;
 
-  //   return await dio.get(path,
-  //       options: Options(
-  //         headers: {
-  //           'Content-type': 'application/json',
-  //           'Accept': 'application/json',
-  //           'Authorization': "Bearer $token"
-  //         },
-  //         followRedirects: false,
-  //         validateStatus: (status) {
-  //           return status! < 500;
-  //         },
-  //       ));
-  // }
 
   Future<Response> post(String path,
       {required Map<String, dynamic> data}) async {
