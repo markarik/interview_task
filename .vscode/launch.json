@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "marvins-app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "marvins-app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "marvins-app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+
+        {
+			"name": "Android",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "emulator-5554"
+		},
+		{
+			"name": "iPhone",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "FACB53BB-648B-4089-89D7-8BF1B203BC1E"
+		},
+
+        {
+			"name": "physical device",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "a6ebf66c"
+		},
+        {
+			"name": "old iphone",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "767EDC4D-95F5-4A1C-9E9F-16F2F07DA4C0"
+		},
+        {
+			"name": "web",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "chrome"
+		},
+
+        
+    ],
+    "compounds": [
+		{
+			"name": "All Devices",
+			"configurations": ["iPhone","Android", "physical device","old iphone","web",],
+		}
+	]
+}
