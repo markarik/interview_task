@@ -40,7 +40,7 @@ final headerStyle = TextStyle(
 );
 final header2Style = TextStyle(
   color: colorBlack,
-  fontSize: fontSize15,
+  fontSize: kIsWeb ? fontSize5:fontSize15,
   fontWeight: FontWeight.bold,
 );
 

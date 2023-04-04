@@ -1,9 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:wingman/utils/colors.dart';
 import 'package:wingman/utils/font_sizes.dart';
-import 'package:wingman/utils/responsive.dart';
 
 class ElevationButton extends HookConsumerWidget {
   final Icon? icons;
@@ -32,8 +32,7 @@ class ElevationButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var textStyle2 = TextStyle(
-      fontSize:
-          ResponsiveWidget.isSmallScreen(context) ? fontSize16 : fontSize5,
+      fontSize: !kIsWeb ? fontSize16 : fontSize5,
     );
 
     return ElevatedButton(

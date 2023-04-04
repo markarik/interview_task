@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wingman/utils/colors.dart';
-import 'package:wingman/utils/responsive.dart';
 import 'package:wingman/utils/textstyle.dart';
 
 class TextFormFieldMaterial extends HookWidget {
@@ -93,7 +93,7 @@ InputDecoration formFieldsImputDecorations(
 /// Returns:
 ///   A Row widget with a CircleAvatar widget as its child.
 logoSection(BuildContext context) {
-  return ResponsiveWidget.isSmallScreen(context)
+  return !kIsWeb
       ? Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
